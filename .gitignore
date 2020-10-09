@@ -131,3 +131,4 @@ dmypy.json
 
 #modelos
 *.h5py
+*.h5
