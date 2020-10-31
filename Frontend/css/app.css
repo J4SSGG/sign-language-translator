@@ -1,0 +1,359 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #5a5a5a;
+  font-family: 'Chilanka', cursive;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-align: center;
+}
+
+#camera {
+  background: black;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+#preview img {
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  display: none;
+}
+
+.options {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+  background: #427180;
+  bottom: 0;
+  width: 100%;
+}
+
+.shootTrigger i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+  width: 50px;
+  background: red;
+  bottom: 100;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.subSection {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.tooltip {
+  min-width: 200px;
+  padding: 5px;
+  background-color: #b6dbec;
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-size: 18px;
+}
+
+select {
+  border: none;
+  font-size: 1.2rem;
+}
+
+input {
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 5vw;
+  font-weight: 800;
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 8vw;
+  }
+}
+
+label[for='image'], label[for='camera'], label#enviarCalificacion {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #5a5a5a;
+  display: inline-block;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  cursor: pointer;
+  padding: 15px 40px !important;
+  text-transform: uppercase;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  margin-right: 10px;
+}
+
+label[for='search'] {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #5d8394;
+  display: inline-block;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  cursor: pointer;
+  padding: 15px 40px !important;
+  text-transform: uppercase;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  margin-right: 10px;
+}
+
+input[type='file'] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.material-icons {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.mt-5 {
+  margin-top: 5rem;
+}
+
+#results {
+  width: 100%;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+table {
+  border: solid 1px #5d8394;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font: normal 13px Arial, sans-serif;
+}
+
+table thead th {
+  background-color: #DDEFEF;
+  border: solid 1px #DDEEEE;
+  color: #336B6B;
+  padding: 10px;
+  text-align: left;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+table tbody td {
+  border: solid 1px #DDEEEE;
+  color: #333;
+  padding: 10px;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+#calificar {
+  margin-top: 25px;
+}
+
+#calificacionValor {
+  font-size: 16px;
+}
+
+#load {
+  position: fixed;
+  text-align: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.75);
+}
+
+.preloader {
+  position: relative;
+  top: calc(50% - 35px);
+  left: calc(50% - 35px);
+  width: 70px;
+  height: 70px;
+  border: 10px solid #eee;
+  border-top: 10px solid #666;
+  border-radius: 50%;
+  -webkit-animation-name: girar;
+          animation-name: girar;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes girar {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes girar {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/**LOGIN**/
+.wrap {
+  position: fixed;
+  text-align: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.75);
+}
+
+.login-form {
+  width: 350px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 2rem;
+  background: #ffffff;
+}
+
+.form-input {
+  background: #fafafa;
+  border: 1px solid #eeeeee;
+  padding: 12px;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-button {
+  background: #69d2e7;
+  border: 1px solid #ddd;
+  color: #ffffff;
+  padding: 10px;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.form-button:hover {
+  background: #69c8e7;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-footer {
+  text-align: center;
+}
+
+.error {
+  font-size: 12px;
+  color: #da90a9;
+  text-transform: uppercase;
+  text-align: left !important;
+}
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr {
+    display: block;
+    z-index: -1;
+    text-align: center;
+    border: none;
+  }
+  tr {
+    border: 1px solid #ccc;
+  }
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #a8a8a8;
+    position: relative;
+    padding-left: 50%;
+  }
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+}
+/*# sourceMappingURL=app.css.map */
