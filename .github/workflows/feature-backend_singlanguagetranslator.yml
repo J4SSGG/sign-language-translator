@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Python app to Azure Web App - signlanguagetranslatorbackend
+name: Build and deploy Python app to Azure Web App - singlanguagetranslator
 
 on:
   push:
@@ -29,6 +29,6 @@ jobs:
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'signlanguagetranslatorbackend'
+        app-name: 'singlanguagetranslator'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_c1e6ff871757424db59e86d5859542be }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_371ba33e61be496bb45970ca73301078 }}
