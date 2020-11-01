@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+*.h5
+*.jpg
+*.png
+*REFACTOR/test_images
+*REFACTOR/test_labels
+*REFACTOR/train_images
+*REFACTOR/train_labels
+*REFACTOR/val_images
+*REFACTOR/val_labels
