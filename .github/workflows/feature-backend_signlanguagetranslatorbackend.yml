@@ -31,4 +31,4 @@ jobs:
       with:
         app-name: 'signlanguagetranslatorbackend'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2b11ad6784ff4a8fbe40d51f8f31695f }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_c1e6ff871757424db59e86d5859542be }}
