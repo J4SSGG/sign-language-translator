@@ -52,9 +52,22 @@ $('#cameraIcon').click(function(){
 /// buscar
 $('#buscar').click(function(){
     try {
-        handleQuery();
-        updateStats(1,0,0); // aumenta las busquedas en 1
-        $("#calificar").show(); //muestra seccion calificar
+      //------------------------------------------------------------
+      var request = new XMLHttpRequest();
+      request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+      request.onload = function () {
+        // Begin accessing JSON data here
+        var data = JSON.parse(this.response);
+        if (request.status >= 200 && request.status < 400) {
+          console.log(data);
+        } else {
+          const errorMessage = document.createElement('marquee');
+          errorMessage.textContent = `Gah, it's not working!`;
+          app.appendChild(errorMessage);
+        }
+      }
+      request.send();
+      //------------------------------------------------------------
     } catch (error) {
         alert("Debe seleccionar una imagen.")
         hideWait();
