@@ -1,3 +1,4 @@
+#!/usr/bin/env python3 
 # ML dependencies
 import numpy as np
 import cv2
@@ -75,3 +76,6 @@ def index():
     prediction = int(prediction)
     accuracy = "{:.2f}".format(100 * accuracy)
     return jsonify({ "prediction": prediction, "accuracy": accuracy, "letter" : letter })
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',port="8000",debug=True)
