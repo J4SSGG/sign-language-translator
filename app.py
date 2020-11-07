@@ -75,6 +75,3 @@ def index():
     prediction = int(prediction)
     accuracy = "{:.2f}".format(100 * accuracy)
     return jsonify({ "prediction": prediction, "accuracy": accuracy, "letter" : letter })
-
-
-app.run('localhost', 8000)
