@@ -68,8 +68,13 @@ app = Flask(__name__)
 print("Loading model...")
 new_model = load_model(modelName = "model.h5")
 
+
 @app.route("/", methods=["POST"])
 def index():
+    return jsonify({ "on": True })
+
+@app.route("/image", methods=["POST"])
+def image():
     imageFile = request.files['image']
     image = readImage(imageFile)
     prediction, accuracy, letter = predict(image)
