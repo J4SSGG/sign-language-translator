@@ -69,7 +69,7 @@ print("Loading model...")
 new_model = load_model(modelName = "model.h5")
 
 
-@app.route("/", methods=["POST"])
+@app.route("/", methods=["GET"])
 def index():
     return jsonify({ "on": True })
 
