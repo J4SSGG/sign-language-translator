@@ -30,21 +30,23 @@ $('#changeCamera').click(function(){
 
 ///colocar la imagen del stream en div:preview 
 $('#cameraIcon').click(function(){
+    
     $video = document.querySelector('video');
     $video.pause();
 
     //Obtener contexto del canvas y dibujar sobre él
     $canvas = document.querySelector('canvas')
     let contexto = $canvas.getContext("2d");
-    $canvas.width = $video.videoWidth;
-    $canvas.height = $video.videoHeight;
+    //$canvas.width = $video.videoWidth;
+    //$canvas.height = $video.videoHeight;
+    $canvas.width = 500;
+    $canvas.height = 500;
     contexto.drawImage($video, 0, 0, $canvas.width, $canvas.height);
 
     $('#camera').fadeOut(500);
     $('#main').fadeIn(500);
 
     stop();
-
     filePreviewCanvas($canvas);
     
 });
@@ -109,6 +111,7 @@ $('input[type=file]').change(function(){
 
 
 function filePreview(input) {
+  
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -123,6 +126,11 @@ function filePreview(input) {
 
 function filePreviewCanvas(canvas){
     $('#preview img').remove();
+
+    const image = document.createElement('img');
+
+    image.src = canvas.toDataURL();
+    console.log(image);
     $('#preview').append('<img id="uploadImage" src="'+canvas.toDataURL()+'" width="100%" />');
     $('#preview img').fadeIn(1000);
 }

@@ -29,6 +29,7 @@ function gotDevices(deviceInfos) {
     option.value = deviceInfo.deviceId;
 
     if (deviceInfo.kind === 'videoinput') {
+      
       option.text = `Camera ${i + 1}`;
       videoSelect.push(option);
     } else {
