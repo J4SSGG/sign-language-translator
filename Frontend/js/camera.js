@@ -76,4 +76,77 @@ function stop(){
   }
 }
 
+//Funciones para enviar archivos-------------------------------------------------------
+function makeblobBlob(dataURL) {
+  var BASE64_MARKER = ';base64,';
+  if (dataURL.indexOf(BASE64_MARKER) == -1) {
+      var parts = dataURL.split(',');
+      var contentType = parts[0].split(':')[1];
+      var raw = decodeURIComponent(parts[1]);
+      return new Blob([raw], { type: contentType });
+  }
+  var parts = dataURL.split(BASE64_MARKER);
+  var contentType = parts[0].split(':')[1];
+  var raw = window.atob(parts[1]);
+  var rawLength = raw.length;
+
+  var uInt8Array = new Uint8Array(rawLength);
+
+  for (var i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+  }
+
+  return new Blob([uInt8Array], { type: contentType });
+}
+
+// Format the request and send it.
+function sendRequestBlob(file) {
+  var baseUri = `http://52.249.197.205/image`;
+
+  var form = new FormData();
+  form.append("image", file);
+
+  var request = new XMLHttpRequest();
+  request.open("POST", baseUri);
+
+  request.onload = function () {
+    var data = JSON.parse(this.response);
+    if (request.status >= 200 && request.status < 400) {
+      console.log(data);  
+    }else {
+      console.log("pues no sirvio el print");
+    }
+  }
+  
+  
+  request.send(form);
+  //request.setRequestHeader('BingAPIs-Market', 'en-US');
+  //request.addEventListener('load', handleResponse);
+}
+
+
+
+function handleQueryBlob(canvas) {
+  showWait();
+  console.log('Termino showWait');
+  // Make sure user provided a subscription key and image.
+  //var responseDiv = document.getElementById('responseSection');
+
+  // Clear out the response from the last query.
+  //while (responseDiv.childElementCount > 0) {
+     // responseDiv.removeChild(responseDiv.lastChild);
+  //}
+
+  // Send the request to Bing to get insights about the image.
+  var imagePath = document.getElementById('uploadImage');
+  var canvas = document.getElementById("canvas");
+  canvas.width = imagePath.width;
+  canvas.height = imagePath.height;
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(imagePath, 0,0, imagePath.width, imagePath.height);
+  sendRequestBlob (makeblob(canvas.toDataURL('image/png')));
+
+}
+
+
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);

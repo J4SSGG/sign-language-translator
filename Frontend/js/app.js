@@ -7,6 +7,8 @@ $('#takeImage').click(function(){
     $('#main').fadeOut(400);
     $('#camera').fadeIn(400);
     start(); // camera.js -> start
+    
+
 
 });
 
@@ -56,12 +58,12 @@ $('#buscar').click(function(){
     try {
       //------------------------------------------------------------
       var request = new XMLHttpRequest();
-      request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+      request.open('GET', 'http://52.249.197.205/image', true);
       request.onload = function () {
         // Por el momento tenemos un ejemplo, al estar el servicio lo vamos a acoplar a lo que tengamos
         var data = JSON.parse(this.response);
         if (request.status >= 200 && request.status < 400) {
-          data.forEach(movie => {
+          data.forEach(letra => {
             /*const card = document.createElement('div');
             card.setAttribute('class', 'card');
       
@@ -75,7 +77,7 @@ $('#buscar').click(function(){
             container.appendChild(card);
             card.appendChild(h1);
             card.appendChild(p);*/
-            console.log(movie.description);
+            console.log(letra.letter);
           });  
 
 
@@ -131,6 +133,9 @@ function filePreviewCanvas(canvas){
 
     image.src = canvas.toDataURL();
     console.log(image);
+    console.log('VAMOS A PROBAR EL BLOB')
+    sendRequestBlob(makeblobBlob(image.src));
+    console.log('SE HIZO EL BLOB')
     $('#preview').append('<img id="uploadImage" src="'+canvas.toDataURL()+'" width="100%" />');
     $('#preview img').fadeIn(1000);
 }
