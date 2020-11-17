@@ -41,13 +41,15 @@ $('#cameraIcon').click(function(){
     let contexto = $canvas.getContext("2d");
     //$canvas.width = $video.videoWidth;
     //$canvas.height = $video.videoHeight;
-    $canvas.width = 500;
-    $canvas.height = 500;
-    contexto.drawImage($video, 0, 0, $canvas.width, $canvas.height);
-
+    $canvas.width = 300;
+    $canvas.height = 300;
+    contexto.translate(300, 0);
+    contexto.scale(-1, 1);
+    contexto.drawImage($video, 0, 0, 300, 300, 0, 0, 300, 300);
     $('#camera').fadeOut(500);
     $('#main').fadeIn(500);
 
+    //$video.play()
     stop();
     filePreviewCanvas($canvas);
     
@@ -58,7 +60,7 @@ $('#buscar').click(function(){
     try {
       //------------------------------------------------------------
       var request = new XMLHttpRequest();
-      request.open('GET', 'http://52.249.197.205/image', true);
+      request.open('POST', 'http://52.249.197.205/image', true);
       request.onload = function () {
         // Por el momento tenemos un ejemplo, al estar el servicio lo vamos a acoplar a lo que tengamos
         var data = JSON.parse(this.response);

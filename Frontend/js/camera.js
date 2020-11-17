@@ -120,8 +120,6 @@ function sendRequestBlob(file) {
   
   
   request.send(form);
-  //request.setRequestHeader('BingAPIs-Market', 'en-US');
-  //request.addEventListener('load', handleResponse);
 }
 
 
@@ -129,15 +127,6 @@ function sendRequestBlob(file) {
 function handleQueryBlob(canvas) {
   showWait();
   console.log('Termino showWait');
-  // Make sure user provided a subscription key and image.
-  //var responseDiv = document.getElementById('responseSection');
-
-  // Clear out the response from the last query.
-  //while (responseDiv.childElementCount > 0) {
-     // responseDiv.removeChild(responseDiv.lastChild);
-  //}
-
-  // Send the request to Bing to get insights about the image.
   var imagePath = document.getElementById('uploadImage');
   var canvas = document.getElementById("canvas");
   canvas.width = imagePath.width;

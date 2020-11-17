@@ -37,6 +37,21 @@ body {
 .pointer {
   cursor: pointer;
 }
+#cut1 {
+  position: absolute;
+  width: 340px;
+  margin-left: 300px;
+  height: 480px;
+  background-color: black;
+}
+
+#cut2 {
+  position: absolute;
+  width: 640px;
+  height: 180px;
+  margin-top: 300px;
+  background-color: black;
+}
 
 #preview img {
   width: 100%;
