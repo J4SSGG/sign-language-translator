@@ -1,3 +1,4 @@
+#!/usr/bin/env python3 
 # ML dependencies
 import numpy as np
 import cv2
@@ -49,6 +50,8 @@ def predict(image):
     #return "This image most likely belongs to {} (index: {}) with a {:.2f} percent confidence.".format(translate_prediction(prediction), prediction, 100 * np.max(score))
     return prediction, accuracy, letter
 
+
+
 def readImage(image):
     decoded_data = image.read()
     nparr = np.fromstring(decoded_data, dtype=np.uint8)
@@ -56,17 +59,6 @@ def readImage(image):
     # preprocesa imagen
     image = preprocess_image(image)
     return image
-    
-def readImages(image):
-    value = []
-    for f in image:
-        decoded_data = f.read()
-        nparr = np.fromstring(decoded_data, dtype=np.uint8)
-        f = cv2.imdecode(nparr, cv2.IMREAD_UNCHANGED)
-    # preprocesa imagen
-        f = preprocess_image(f)
-        value.append(f)
-    return value
 
 # REST API dependencies
 from flask import Flask, jsonify, request
@@ -76,31 +68,19 @@ app = Flask(__name__)
 print("Loading model...")
 new_model = load_model(modelName = "model.h5")
 
-#Original
-#@app.route("/", methods=["POST"])
-#def index():
- #   imageFile = request.files['image']
- #  image = readImage(imageFile)
- #   prediction, accuracy, letter = predict(image)
- #  accuracy = "{:.2f}".format(100 * accuracy)
- #  return jsonify({ "prediction": prediction, "accuracy": accuracy, "letter" : letter })
-    
-#endpoint para múltiples imágenes
-@app.route("/", methods=["POST"])
+
+@app.route("/", methods=["GET"])
 def index():
-    imageFile = request.files.getlist('image')
-    image = readImages(imageFile)
-    
-    predictionResult = []
-    accuracyResult = []
-    letterResult = []
-    for f in image:    
-        prediction, accuracy, letter = predict(f)
-        prediction = int(prediction)
-        accuracy = "{:.2f}".format(100 * accuracy)
-        predictionResult.append(prediction)
-        accuracyResult.append(accuracy)
-        letterResult.append(letter)
-    
-    return jsonify({ "prediction": predictionResult, "accuracy": accuracyResult, "letter" : letterResult })
-    
+    return jsonify({ "on": True })
+
+@app.route("/image", methods=["POST"])
+def image():
+    imageFile = request.files['image']
+    image = readImage(imageFile)
+    prediction, accuracy, letter = predict(image)
+    prediction = int(prediction)
+    accuracy = "{:.2f}".format(100 * accuracy)
+    return jsonify({ "prediction": prediction, "accuracy": accuracy, "letter" : letter })
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',port="80",debug=True)
