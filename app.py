@@ -11,7 +11,7 @@ from sklearn.preprocessing import normalize
 
 
 # mapa de clases
-class_names = ['A', 'C', 'E', 'I', 'L', 'N', 'O', 'R', 'S', 'T', 'U', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', ' ']
+class_names = ['A', 'C', 'E', 'I', 'L', 'O', 'R', 'U', '2', '3', '4', '5', '6', '7', '8', '9', '10', ' ']
 # variable de configuracion
 img_height = 50
 img_width = 50
