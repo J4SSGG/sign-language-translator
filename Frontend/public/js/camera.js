@@ -110,13 +110,10 @@ function sendRequestBlob(file) {
   request.open("POST", baseUri);
 
   request.onload = function () {
-    //hacer prueba de texto
-    console.log("NO LLEGA AQUI");
-    document.getElementById("textoSalida").innerHTML=document.getElementById("textoSalida").innerHTML+"PRUEBA";
     var data = JSON.parse(this.response);
     if (request.status >= 200 && request.status < 400) {
       console.log(data); 
-      document.getElementById("textoSalida").innerHTML="PRUEBA";
+      document.getElementById("textoSalida").innerHTML += data.letter;
       //aqui hay que poner el texto en la vista 
     }else {
       console.log("pues no sirvio el print");
