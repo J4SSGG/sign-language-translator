@@ -112,7 +112,8 @@ function sendRequestBlob(file) {
   request.onload = function () {
     var data = JSON.parse(this.response);
     if (request.status >= 200 && request.status < 400) {
-      console.log(data);  
+      console.log(data); 
+      //aqui hay que poner el texto en la vista 
     }else {
       console.log("pues no sirvio el print");
     }

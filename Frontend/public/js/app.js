@@ -46,13 +46,10 @@ $('#cameraIcon').click(function(){
     contexto.translate(300, 0);
     contexto.scale(-1, 1);
     contexto.drawImage($video, 0, 0, 300, 300, 0, 0, 300, 300);
-    $('#camera').fadeOut(500);
-    $('#main').fadeIn(500);
 
-    //$video.play()
-    stop();
-    filePreviewCanvas($canvas);
-    
+    $video.play()
+    //stop();
+    sendRequestBlob(makeblobBlob($canvas.toDataURL()));
 });
 
 /// buscar
@@ -126,20 +123,6 @@ function filePreview(input) {
         }
         reader.readAsDataURL(input.files[0]);
     }
-}
-
-function filePreviewCanvas(canvas){
-    $('#preview img').remove();
-
-    const image = document.createElement('img');
-
-    image.src = canvas.toDataURL();
-    console.log(image);
-    console.log('VAMOS A PROBAR EL BLOB')
-    sendRequestBlob(makeblobBlob(image.src));
-    console.log('SE HIZO EL BLOB')
-    $('#preview').append('<img id="uploadImage" src="'+canvas.toDataURL()+'" width="100%" />');
-    $('#preview img').fadeIn(1000);
 }
 
 
