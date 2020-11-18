@@ -11,7 +11,7 @@ from sklearn.preprocessing import normalize
 
 
 # mapa de clases
-class_names = ['A', 'C', 'E', 'I', 'L', 'O', 'R', 'U', '2', '3', '4', '5', '6', '7', '8', '9', '10', ' ']
+class_names = ['A', 'C', 'E', 'I', 'L', 'O', 'R', 'U', '2', '3', '4', '5', '6', '7', '8', '9', '10', ' ', '1']
 # variable de configuracion
 img_height = 50
 img_width = 50
@@ -83,4 +83,4 @@ def image():
     return jsonify({ "prediction": prediction, "accuracy": accuracy, "letter" : letter })
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port="80",debug=True)
+    app.run(host='0.0.0.0',port="443",debug=True, ssl_context = 'adhoc')
